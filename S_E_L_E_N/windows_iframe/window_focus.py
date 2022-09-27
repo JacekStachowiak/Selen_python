@@ -30,7 +30,7 @@ class SwitchToWindow():
             if handle not in parentHandle:
                 driver.switch_to.window(handle)
                 print(f'Switched to window: {handle}')
-                search = driver.find_element(By.ID, 'search')
+                search = driver.find_element(By.XPATH, '//input[@id="search"]')
                 search.send_keys('python')
                 time.sleep(3)
                 driver.close()   
@@ -39,6 +39,7 @@ class SwitchToWindow():
         # back to parentHandle
         driver.switch_to.window(parentHandle)
         driver.find_element(By.ID, 'name').send_keys('Test success')
+        time.sleep(3)
         
         driver.quit()
 
