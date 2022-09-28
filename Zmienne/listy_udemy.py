@@ -3,7 +3,7 @@ pusta_lista = []
 print(cars)
 print(pusta_lista)
 
-print('*#'*20)  # *#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
+print('*#'*20)  # *#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*
 print(cars[0]) # bmw
 print(cars[1]) # audi
 print('*'*20)
