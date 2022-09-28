@@ -1,39 +1,37 @@
-# podnieść i upuść
-
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver import ActionChains
 
-# najeżdżamy myszką na "Mouse Hover" i wyświtla się menu
-
-class DragAndDropAction():
+class SlidersAction():
     
     def test(self):
         
         driver = webdriver.Chrome(ChromeDriverManager().install())
-        baseUrl = 'https://jqueryui.com/droppable/'
+        baseUrl = 'https://jqueryui.com/slider/'
         driver.get(baseUrl)
         driver.maximize_window()
         driver.implicitly_wait(4)
         
         driver.switch_to.frame(0)   # ustawiamy frame-ma
         
-        fromElement = driver.find_element(By.ID, 'draggable')
-        toElement = driver.find_element(By.ID, 'droppable')
+        element = driver.find_element(By.XPATH, '//div[@id="slider"]')
         time.sleep(3)
         
         try:
-            actions = ActionChains(driver)
-            actions.drag_and_drop(fromElement, toElement).perform()
-            print('Drag and Drop element successful')
+            action = ActionChains(driver)
+            action.drag_and_drop_by_offset(element, 100, 0).perform()    # source x =100, y = 0
+            time.sleep(3)
+            print('Sleding Element successful')
             time.sleep(2)
         except:
-            print('Drag and Drop failed element')
+            print('Sliding failed on element')
                          
         driver.quit()
-
-run_test = DragAndDropAction()
+    
+    
+run_test = SlidersAction()
 run_test.test()
+
             
