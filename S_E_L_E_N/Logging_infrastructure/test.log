@@ -1,0 +1,10 @@
+2022/09/29  20:04 PM - LoggerDemoConf - DEBUG: debug message
+2022/09/29  20:04 PM - LoggerDemoConf - INFO: info message
+2022/09/29  20:04 PM - LoggerDemoConf - WARNING: warning message
+2022/09/29  20:04 PM - LoggerDemoConf - ERROR: error message
+2022/09/29  20:04 PM - LoggerDemoConf - CRITICAL: critical message
+2022/09/29  20:04 PM - LoggerDemoConf - DEBUG: debug message
+2022/09/29  20:04 PM - LoggerDemoConf - INFO: info message
+2022/09/29  20:04 PM - LoggerDemoConf - WARNING: warning message
+2022/09/29  20:04 PM - LoggerDemoConf - ERROR: error message
+2022/09/29  20:04 PM - LoggerDemoConf - CRITICAL: critical message
