@@ -10,10 +10,4 @@ tc2 = unittest.TestLoader().loadTestsFromTestCase(TestClass2)
 # zestaw testowy łączący TestClass1/TestClass2
 smoke_test = unittest.TestSuite([tc1,tc2])
 
-unittest.TextTestRunner(verbosity=2)
-
-
-
-
-
-
+unittest.TextTestRunner(verbosity=2).run(smoke_test)
