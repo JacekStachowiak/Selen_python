@@ -10,7 +10,6 @@ class TestClass2(unittest.TestCase):
         print()
         
     def setUp(self):
-        print()
         print('Class2 --> setUp')
     
     def test_methodA(self):
