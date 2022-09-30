@@ -1,7 +1,7 @@
 import unittest
 
 class TestClass2(unittest.TestCase):
-    
+        
     @ classmethod
     def setUpClass(cls):
         print('#*' * 30)
