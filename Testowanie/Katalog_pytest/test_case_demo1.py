@@ -12,9 +12,9 @@ import pytest
 def setUp():    # nazwa dowolna
     print('Uruchamia się przed każdą method-ą')
 
-def test_methodA(setUp):
-    print('Uruchamiam metodę A')
+def test_demo1_methodA(setUp):
+    print('Uruchamiam demo1 metodę A')
 
-def test_methodB(setUp):
-    print('Uruchamiam metodę B')
+def test_demo1_methodB(setUp):
+    print('Uruchamiam demo1 metodę B')
 
