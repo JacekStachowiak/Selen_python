@@ -7,7 +7,7 @@ def setUp():
     print('Uruchamiam conftest demo method tearDown')
     
 @pytest.fixture()
-def oneTimeSetUp():
-    print('Uruchamiam conftest demo method setUp')
+def oneTimeSetUp(scope='module'):
+    print('Uruchamiam conftest demo one time setUp')
     yield
-    print('Uruchamiam conftest demo method tearDown')        
+    print('Uruchamiam conftest demo one time tearDown')        
