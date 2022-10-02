@@ -7,5 +7,3 @@ class SomeClassToTest():
 
     def sumNumbers(self, a, b):
         return a + b + self.value
-    
-        
