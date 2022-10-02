@@ -2,12 +2,12 @@ import pytest
 
 @pytest.fixture()
 def setUp():
-    print('Uruchamiam conftest demo method setUp')
+    print('Uruchamiam method setUp')
     yield
-    print('Uruchamiam conftest demo method tearDown')
+    print('Uruchamiam method tearDown')
     
 @pytest.fixture()
 def oneTimeSetUp(scope='module'):
-    print('Uruchamiam conftest demo one time setUp')
+    print('Uruchamiam one time setUp')
     yield
-    print('Uruchamiam conftest demo one time tearDown')       
+    print('Uruchamiam one time tearDown')       
