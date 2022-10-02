@@ -10,4 +10,4 @@ def setUp():
 def oneTimeSetUp(scope='module'):
     print('Uruchamiam conftest demo one time setUp')
     yield
-    print('Uruchamiam conftest demo one time tearDown')        
+    print('Uruchamiam conftest demo one time tearDown')       
