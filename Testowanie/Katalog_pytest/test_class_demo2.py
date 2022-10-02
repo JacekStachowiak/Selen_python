@@ -1,15 +1,17 @@
 import pytest
 from class_to_test import SomeClassToTest
 
-@pytest.mark.usefixtures('oneTimeSetUp','setUp')  # zamiast wpisywać do kolejnych method
+
+# zamiast wpisywać do kolejnych method
+@pytest.mark.usefixtures('oneTimeSetUp', 'setUp')
 class TestClassDemo():
-    
+
     @pytest.fixture(autouse=True)
-    def classSetup(self):
-        self.abc = SomeClassToTest(10)  # wstawiam value
-    
+    def classSetup(self, oneTimeSetUp):
+        self.abc = SomeClassToTest(self.value)  # wstawiam value
+
     def test_methodA(self):
-        result = self.abc.sumNumbers(2,8)
+        result = self.abc.sumNumbers(2, 8)
         assert result == 20
         print('Running method A')
 
