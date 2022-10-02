@@ -1,6 +1,7 @@
 import pytest
-
+# http://pytest-ordering.readthedocs.io/en/develop/
 # uruchamia w kolejności pytest.mark.run(order=...)
+# @pytest.mark.run(after='test_run_order_methodB')
 
 @pytest.mark.run(order=2)
 def test_run_order_methodA(oneTimeSetUp, setUp):
@@ -24,4 +25,4 @@ def test_run_order_methodE(oneTimeSetUp, setUp):
 
 @pytest.mark.run(order=6)
 def test_run_order_methodF(oneTimeSetUp, setUp):
-    print('Running method F')  
+    print('Running method F') 
