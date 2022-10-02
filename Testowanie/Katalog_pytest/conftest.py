@@ -6,7 +6,7 @@ def setUp():
     yield
     print('Uruchamiam method level tearDown')
     
-@pytest.fixture(scope='module')
+@pytest.fixture(scope='class')
 def oneTimeSetUp(browser, osType):
     print('Uruchamiam one time setUp')
     if browser == 'firefox':
