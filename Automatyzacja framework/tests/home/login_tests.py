@@ -3,12 +3,13 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from pages.home.login_page import LoginPage
 import unittest
+import pytest
 
 class LoginTest(unittest.TestCase):
     
     def testLoginValid(self):
         
-        baseURL = 'https://courses.letskodeit.com//'
+        baseURL = 'https://courses.letskodeit.com/'
         driver = webdriver.Chrome(ChromeDriverManager().install())
         driver.maximize_window()
         driver.implicitly_wait(3)
