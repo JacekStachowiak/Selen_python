@@ -1,4 +1,8 @@
 from selenium.webdriver.common.by import By
+from traceback import print_stack
+from selenium.webdriver.support.ui import WebDriverWait     
+from selenium.webdriver.support import expected_conditions as EC 
+from selenium.common.exceptions import *  
 
 class SelenDriver():
     
@@ -17,7 +21,7 @@ class SelenDriver():
             return By.NAME
         elif locatorType == 'class_name':
             return By.CLASS_NAME
-        elif locatorType == 'link_text':
+        elif locatorType == 'link':
             return By.LINK_TEXT
         else:
             print(f'Ten typ locatora {locatorType} nie jest wspierany/nie jest dobry')
@@ -32,8 +36,29 @@ class SelenDriver():
             print('Element Found')           
         except:
             print('Element not found')
-        return element            
+        return element      
+    
+    
+    def elementClick(self, locator, locatorType='id'):
+        try:
+            element = self.getElement(locator, locatorType)
+            element.click()
+            print(f'Click on element with locator: {locator}, locatorType: {locatorType}')
+        except:
+            print(f'Cannot click on element with locator: {locator}, locatorType: {locatorType}')
+            print_stack()            
 
+    
+    def sendKeys(self, data, locator, locatorType='id'):
+        try:
+            element = self.getElement(locator, locatorType)
+            element.send_keys(data)
+            print(f'Send data on element with locator: {locator}, locatorType: {locatorType}')
+        except:
+            print(f'Send data on element with locator: {locator}, locatorType: {locatorType}')
+            print_stack() 
+    
+    
 # aby sprawdzić czy element jest obecny na stronie - czy będzie false czy True cały czas testujemy (nie wyrzuci)
     def isElementPresent(self, byType, locator):
         try:
@@ -61,3 +86,19 @@ class SelenDriver():
         except:
             print('Element not found')
             return False
+    
+    
+    def waitForElement(self, locator, locatorType = 'id',timeout_1=10, pollFrequency_1=0.5):
+        element = None
+        try:
+            byType = self.getByType(locatorType)
+            print(f'Waiting for maximum:: {timeout_1} :: second for element to be visible')
+            wait = WebDriverWait(self.driver, timeout=timeout_1, poll_frequency=pollFrequency_1, ignored_exceptions=[NoSuchElementException,
+                                                                                       ElementNotVisibleException,
+                                                                                       ElementNotSelectableException]) 
+            element = wait.until(EC.visibility_of_element_located((byType, locator))) # uwaga na ilośc nawiasów
+            print('Element appeared on the web page')
+        except:
+            print('Element not appeared on the page')
+            print_stack()  # ślad stosu
+        return element        
