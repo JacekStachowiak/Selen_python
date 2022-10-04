@@ -30,7 +30,7 @@ class LoginTest(unittest.TestCase):
     @pytest.mark.run(order=1)    
     def test_invalidLogin(self):
         self.driver.get(self.baseURL)
-        self.lp.login('test@email.com','abcabcAGDVB')
+        self.lp.login('test@email.com','abcabcDSSAGDVB')
         result = self.lp.verifyLoginFailed()
         assert result == True
             
