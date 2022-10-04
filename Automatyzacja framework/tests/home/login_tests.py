@@ -10,7 +10,8 @@ import pytest
 
 class LoginTest(unittest.TestCase):
     
-    baseURL = 'https://courses.letskodeit.com/'
+    baseURL = 'https://learn.letskodeit.com/'
+    #baseURL = 'https://courses.letskodeit.com/'
     #options=Options
     #options.add_argument("start-maximized")
     #driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)

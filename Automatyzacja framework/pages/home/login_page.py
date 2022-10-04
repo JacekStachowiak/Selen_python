@@ -3,7 +3,6 @@ from selenium.webdriver.common.by import By
 from base.selen_driver import SelenDriver
 import utilities.custom_logger as cl  
 import logging
-import time
 class LoginPage(SelenDriver):
     
     log = cl.customLogger(logging.DEBUG)
@@ -13,11 +12,16 @@ class LoginPage(SelenDriver):
         self.driver = driver
     
     # locators
-    _login_link = '//a[text()="Sign In"]'
+    _login_link = '//a[text()="Login"]'
+    #_login_link = '//a[text()="Sign In"]'
     _email_field = 'email'
+    #_email_field = 'email'
     _password_field = 'password'
-    _login_button = '//input[@class="btn btn-default btn-block btn-md dynamic-button"]'
-    _all_Course = '//a[text()="ALL COURSES"]'
+    #_password_field = 'password'
+    _login_button = 'commit'
+    #_login_button = '//input[@class="btn btn-default btn-block btn-md dynamic-button"]'
+    
+    #_all_Course = '//a[text()="ALL COURSES"]'
     
     # def getLoginLink(self):
     #     return self.driver.find_element(By.XPATH, self._login_link)
@@ -35,7 +39,8 @@ class LoginPage(SelenDriver):
     #     return self.driver.find_element(By.XPATH, self._all_Course)
         
     def clickLoginLink(self):
-        self.elementClick(self._login_link, locatorType='xpath')
+        #self.elementClick(self._login_link, locatorType='xpath')
+        self.elementClick(self._login_link, locatorType='link')
     
     def enterEmail(self, email):
         self.sendKeys(email, self._email_field, locatorType='id')
@@ -44,10 +49,10 @@ class LoginPage(SelenDriver):
         self.sendKeys(password, self._password_field, locatorType='id') 
     
     def clickLoginButton(self):
-        self.elementClick(self._login_button, locatorType='xpath')
+        self.elementClick(self._login_button, locatorType='name')
     
-    def clickAllCourse(self):
-        self.elementClick(self._all_Course, locatorType='xpath')
+    #def clickAllCourse(self):
+    #    self.elementClick(self._all_Course, locatorType='xpath')
 
 
     def login(self, email='', password=''):
@@ -55,14 +60,13 @@ class LoginPage(SelenDriver):
         self.enterEmail(email)
         self.enterPassword(password)
         self.clickLoginButton()
-        time.sleep(3)
-        self.clickAllCourse()
+        # self.clickAllCourse()
     
     def verifyLoginSuccessfull(self):
         result = self.isElementPresent('//div[@class="dropdown"]', locatorType='xpath')
         return result
     
     def verifyLoginFailed(self):
-        result = self.isElementPresent('//span[contains(text(),"Your username or password is invalid. Please try again.")]', locatorType='xpath')
+        result = self.isElementPresent('//text()="Your email or password is incorrect."', locatorType='xpath')
         return result
                 
