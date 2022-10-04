@@ -1,0 +1,20 @@
+2022/10/04 12:23 PM: INFO: Element Found with locator: //a[text()="Sign In"] and locatorType: xpath
+2022/10/04 12:23 PM: INFO: Click on element with locator: //a[text()="Sign In"], locatorType: xpath
+2022/10/04 12:23 PM: INFO: Element Found with locator: email and locatorType: id
+2022/10/04 12:23 PM: INFO: Send data on element with locator: email, locatorType: id
+2022/10/04 12:23 PM: INFO: Element Found with locator: password and locatorType: id
+2022/10/04 12:23 PM: INFO: Send data on element with locator: password, locatorType: id
+2022/10/04 12:23 PM: INFO: Element Found with locator: //input[@class="btn btn-default btn-block btn-md dynamic-button"] and locatorType: xpath
+2022/10/04 12:23 PM: INFO: Click on element with locator: //input[@class="btn btn-default btn-block btn-md dynamic-button"], locatorType: xpath
+2022/10/04 12:23 PM: INFO: Element Found with locator: //a[text()="ALL COURSES"] and locatorType: xpath
+2022/10/04 12:24 PM: INFO: Click on element with locator: //a[text()="ALL COURSES"], locatorType: xpath
+2022/10/04 12:25 PM: INFO: Element Found with locator: //a[text()="Sign In"] and locatorType: xpath
+2022/10/04 12:25 PM: INFO: Click on element with locator: //a[text()="Sign In"], locatorType: xpath
+2022/10/04 12:25 PM: INFO: Element Found with locator: email and locatorType: id
+2022/10/04 12:25 PM: INFO: Send data on element with locator: email, locatorType: id
+2022/10/04 12:25 PM: INFO: Element Found with locator: password and locatorType: id
+2022/10/04 12:25 PM: INFO: Send data on element with locator: password, locatorType: id
+2022/10/04 12:25 PM: INFO: Element Found with locator: //input[@class="btn btn-default btn-block btn-md dynamic-button"] and locatorType: xpath
+2022/10/04 12:25 PM: INFO: Click on element with locator: //input[@class="btn btn-default btn-block btn-md dynamic-button"], locatorType: xpath
+2022/10/04 12:25 PM: INFO: Element Found with locator: //a[text()="ALL COURSES"] and locatorType: xpath
+2022/10/04 12:25 PM: INFO: Click on element with locator: //a[text()="ALL COURSES"], locatorType: xpath

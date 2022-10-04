@@ -1,7 +1,10 @@
 from selenium.webdriver.common.by import By
 from base.selen_driver import SelenDriver
-
+import utilities.custom_logger as cl  
+import logging
 class LoginPage(SelenDriver):
+    
+    log = cl.customLogger(logging.DEBUG)
     
     def __init__(self, driver):
         super().__init__(driver)
@@ -28,8 +31,7 @@ class LoginPage(SelenDriver):
     
     # def getAllCourse(self):
     #     return self.driver.find_element(By.XPATH, self._all_Course)
-    
-    
+        
     def clickLoginLink(self):
         self.elementClick(self._login_link, locatorType='xpath')
     

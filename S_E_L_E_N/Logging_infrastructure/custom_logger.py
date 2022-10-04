@@ -6,7 +6,7 @@ def customLogger(loglevel):
     
     loggerName = inspect.stack()[1][3]
     logger = logging.getLogger(loggerName)
-    
+    # By defaul log all messages
     logger.setLevel(logging.DEBUG)
     
     fileHandler = logging.FileHandler('{0}.log'.format(loggerName), mode='w')
