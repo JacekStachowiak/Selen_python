@@ -20,11 +20,7 @@ class LoginTest(unittest.TestCase):
         driver.get(baseURL)
         lp = LoginPage(driver)
         lp.login('test@email.com','abcabc')
-       
-        userIcon = driver.find_element(By.XPATH, '//div[@class="dropdown"]')
-        if userIcon is not None:
-            print('Login Successfull')
-        else:
-            print('Login Failed')
+        result = lp.verifyLoginSuccessfull()
         
+        assert result == True
         driver.quit()

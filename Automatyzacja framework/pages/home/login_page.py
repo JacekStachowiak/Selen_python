@@ -54,3 +54,8 @@ class LoginPage(SelenDriver):
         self.enterPassword(password)
         self.clickLoginButton()
         self.clickAllCourse()
+    
+    def verifyLoginSuccessfull(self):
+        result = self.isElementPresent('//div[@class="dropdown"]', locatorType='xpath')
+        return result
+                
