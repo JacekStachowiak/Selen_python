@@ -1,3 +1,4 @@
+from unittest import result
 from selenium.webdriver.common.by import By
 from base.selen_driver import SelenDriver
 import utilities.custom_logger as cl  
@@ -48,7 +49,7 @@ class LoginPage(SelenDriver):
         self.elementClick(self._all_Course, locatorType='xpath')
 
 
-    def login(self, email, password):
+    def login(self, email='', password=''):
         self.clickLoginLink()
         self.enterEmail(email)
         self.enterPassword(password)
@@ -57,5 +58,9 @@ class LoginPage(SelenDriver):
     
     def verifyLoginSuccessfull(self):
         result = self.isElementPresent('//div[@class="dropdown"]', locatorType='xpath')
+        return result
+    
+    def verifyLoginFailed(self):
+        result = self.isElementPresent('//span[text()="Your username or password is invalid. Please try again."]', locatorType='xpath')
         return result
                 
