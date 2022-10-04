@@ -61,6 +61,6 @@ class LoginPage(SelenDriver):
         return result
     
     def verifyLoginFailed(self):
-        result = self.isElementPresent('//span[contains(text(),"Your username or password is invalid. Please try a")]', locatorType='xpath')
+        result = self.isElementPresent('//span[contains(text(),"Your username or password is invalid. Please try again.")]', locatorType='xpath')
         return result
                 
