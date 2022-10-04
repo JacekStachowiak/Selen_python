@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from base.selen_driver import SelenDriver
 import utilities.custom_logger as cl  
 import logging
+import time
 class LoginPage(SelenDriver):
     
     log = cl.customLogger(logging.DEBUG)
@@ -54,6 +55,7 @@ class LoginPage(SelenDriver):
         self.enterEmail(email)
         self.enterPassword(password)
         self.clickLoginButton()
+        time.sleep(3)
         self.clickAllCourse()
     
     def verifyLoginSuccessfull(self):
