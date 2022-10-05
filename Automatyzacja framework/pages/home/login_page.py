@@ -62,7 +62,7 @@ class LoginPage(SelenDriver):
         return result
     
     def verifyTitle(self):
-        if 'Login' in self.getTitle():
+        if "Let's KOde It" in self.getTitle():
             return True
         else:
             return False
