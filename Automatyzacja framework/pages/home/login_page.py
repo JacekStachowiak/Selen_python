@@ -62,6 +62,12 @@ class LoginPage(SelenDriver):
         result = self.isElementPresent('//span[text()="Your username or password is invalid. Please try again."]', locatorType='xpath')
         return result
     
+    def verifyTitle(self):
+        if "Let's Kode It" in self.getTitle():
+            return True
+        else:
+            return False
+    
     def clearFields(self):
         emailFields = self.getElement(locator=self._email_field)    
         emailFields.clear()

@@ -13,6 +13,9 @@ class SelenDriver():
     def __init__(self, driver):
         self.driver = driver
     
+    def getTitle(self):
+        return self.driver.title        
+    
     def getByType(self, locatorType):        # def dla By.ID i By.Xpath
         locatorType = locatorType.lower()
         if locatorType == 'id':
