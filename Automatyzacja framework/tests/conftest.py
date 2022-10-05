@@ -1,9 +1,5 @@
 import pytest
-from webdriver_manager.chrome import ChromeDriverManager
-#from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
-from selenium import webdriver
-
+from base.webdriverfactory import WebDriverFactory
 
 @pytest.fixture()
 def setUp():
@@ -11,26 +7,12 @@ def setUp():
     yield
     print('Uruchamiam method level tearDown')
 
-
-@pytest.fixture(scope='class')
+@pytest.yield_fixture(scope='class')
 def oneTimeSetUp(request, browser):
     print('Uruchamiam one time setUp')
-    if browser == 'firefox':
-        driver = webdriver.Firefox()
-        baseURL = 'https://courses.letskodeit.com/login'
-        driver.get(baseURL)
-        print('Running tests on FF')
-    else:
-        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-        baseURL = 'https://courses.letskodeit.com/login'
-        #options=Options
-        #options.add_argument("start-maximized")
-        #driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-        driver.maximize_window()
-        driver.implicitly_wait(3)
-        driver.get(baseURL)
-        print('Running tests on Chrome')
-
+    wdf = WebDriverFactory(browser)
+    driver = wdf.getWebDriverInstance()
+   
     if request.cls is not None:
         request.cls.driver = driver
 
@@ -53,3 +35,23 @@ def browser(request):
 @pytest.fixture(scope='session')
 def osType(request):
     return request.config.getoption("--osType")
+
+
+
+#from selenium.webdriver.chrome.options import Options
+
+ # if browser == 'firefox':
+    #     driver = webdriver.Firefox()
+    #     baseURL = 'https://courses.letskodeit.com/login'
+    #     driver.get(baseURL)
+    #     print('Running tests on FF')
+    # else:
+    #     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+    #     baseURL = 'https://courses.letskodeit.com/login'
+    #     #options=Options
+    #     #options.add_argument("start-maximized")
+    #     #driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    #     driver.maximize_window()
+    #     driver.implicitly_wait(3)
+    #     driver.get(baseURL)
+    #     print('Running tests on Chrome')   

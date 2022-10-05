@@ -25,3 +25,29 @@
 2022/10/05 16:22 PM: INFO: Click on element with locator: //a[text()="ALL COURSES"], locatorType: xpath
 2022/10/05 16:22 PM: INFO: Element Found with locator: //*[@id="navbar-inverse-collapse"]/div[1]/div and locatorType: xpath
 2022/10/05 16:22 PM: INFO: Element Found
+2022/10/05 17:10 PM: INFO: Element not found with locator: //a[text()="Login"] and locatorType: link
+2022/10/05 17:10 PM: INFO: Cannot click on element with locator: //a[text()="Login"], locatorType: link
+2022/10/05 17:10 PM: INFO: Element Found with locator: email and locatorType: id
+2022/10/05 17:10 PM: INFO: Element Found with locator: password and locatorType: id
+2022/10/05 17:10 PM: INFO: Element Found with locator: email and locatorType: id
+2022/10/05 17:10 PM: INFO: Send data on element with locator: email, locatorType: id
+2022/10/05 17:10 PM: INFO: Element Found with locator: password and locatorType: id
+2022/10/05 17:10 PM: INFO: Send data on element with locator: password, locatorType: id
+2022/10/05 17:10 PM: INFO: Element Found with locator: //input[@class="btn btn-default btn-block btn-md dynamic-button"] and locatorType: xpath
+2022/10/05 17:10 PM: INFO: Click on element with locator: //input[@class="btn btn-default btn-block btn-md dynamic-button"], locatorType: xpath
+2022/10/05 17:10 PM: INFO: Element Found with locator: //span[text()="Your username or password is invalid. Please try again."] and locatorType: xpath
+2022/10/05 17:10 PM: INFO: Element Found
+2022/10/05 17:11 PM: INFO: Element not found with locator: //a[text()="Login"] and locatorType: link
+2022/10/05 17:11 PM: INFO: Cannot click on element with locator: //a[text()="Login"], locatorType: link
+2022/10/05 17:11 PM: INFO: Element Found with locator: email and locatorType: id
+2022/10/05 17:11 PM: INFO: Element Found with locator: password and locatorType: id
+2022/10/05 17:11 PM: INFO: Element Found with locator: email and locatorType: id
+2022/10/05 17:11 PM: INFO: Send data on element with locator: email, locatorType: id
+2022/10/05 17:11 PM: INFO: Element Found with locator: password and locatorType: id
+2022/10/05 17:11 PM: INFO: Send data on element with locator: password, locatorType: id
+2022/10/05 17:11 PM: INFO: Element Found with locator: //input[@class="btn btn-default btn-block btn-md dynamic-button"] and locatorType: xpath
+2022/10/05 17:11 PM: INFO: Click on element with locator: //input[@class="btn btn-default btn-block btn-md dynamic-button"], locatorType: xpath
+2022/10/05 17:11 PM: INFO: Element Found with locator: //a[text()="ALL COURSES"] and locatorType: xpath
+2022/10/05 17:11 PM: INFO: Click on element with locator: //a[text()="ALL COURSES"], locatorType: xpath
+2022/10/05 17:11 PM: INFO: Element Found with locator: //*[@id="navbar-inverse-collapse"]/div[1]/div and locatorType: xpath
+2022/10/05 17:11 PM: INFO: Element Found
