@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from pages.home.login_page import LoginPage
+from utilities.teststatus import TestStatus
 import unittest
 import pytest
 
@@ -9,12 +10,16 @@ class LoginTest(unittest.TestCase):
     @pytest.fixture(autouse=True)
     def classSetup(self, oneTimeSetUp):
         self.lp = LoginPage(self.driver)
+        self.ts = TestStatus(self.driver)
     
     @pytest.mark.run(order=2) 
     def test_ValidLogin(self):
         self.lp.login2('test@email.com','abcabc')
-        result = self.lp.verifyLoginSuccessfull()
-        assert result == True
+        result1 = self.lp.verifyTitle()
+        self.ts.mark(result1, 'Title is incorrect')
+        result2 = self.lp.verifyLoginSuccessfull()
+        self.ts.markFinal('test_ValidLogin', result2, 'Login was not successful')
+       
             
     @pytest.mark.run(order=1)    
     def test_InvalidLogin(self):

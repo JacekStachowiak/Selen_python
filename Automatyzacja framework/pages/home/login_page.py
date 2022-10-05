@@ -35,13 +35,12 @@ class LoginPage(SelenDriver):
     def clickAllCourse(self):
         self.elementClick(self._all_Course, locatorType='xpath')
 
-
     def login1(self, email='', password=''):
         self.clickLoginLink()
         self.clearFields()
         self.enterEmail(email)
         self.enterPassword(password)
-        time.sleep(3)
+        time.sleep(2)
         self.clickLoginButton()
         # self.clickAllCourse()
     
@@ -50,7 +49,7 @@ class LoginPage(SelenDriver):
         self.clearFields()
         self.enterEmail(email)
         self.enterPassword(password)
-        time.sleep(3)
+        time.sleep(2)
         self.clickLoginButton()
         self.clickAllCourse()
     
@@ -63,7 +62,7 @@ class LoginPage(SelenDriver):
         return result
     
     def verifyTitle(self):
-        if "Let's Kode It" in self.getTitle():
+        if 'Login' in self.getTitle():
             return True
         else:
             return False
