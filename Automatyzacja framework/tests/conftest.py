@@ -1,4 +1,8 @@
 import pytest
+from webdriver_manager.chrome import ChromeDriverManager
+#from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from selenium import webdriver
 
 
 @pytest.fixture()
@@ -12,16 +16,26 @@ def setUp():
 def oneTimeSetUp(request, browser):
     print('Uruchamiam one time setUp')
     if browser == 'firefox':
-        value = 10
+        driver = webdriver.Firefox()
+        baseURL = 'https://courses.letskodeit.com/login'
+        driver.get(baseURL)
         print('Running tests on FF')
     else:
-        value = 20
+        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        baseURL = 'https://courses.letskodeit.com/login'
+        #options=Options
+        #options.add_argument("start-maximized")
+        #driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+        driver.maximize_window()
+        driver.implicitly_wait(3)
+        driver.get(baseURL)
         print('Running tests on Chrome')
 
     if request.cls is not None:
-        request.cls.value = value
+        request.cls.driver = driver
 
-    yield value
+    yield driver
+    driver.quit()
     print('Uruchamiam one time tearDown')
 
 
