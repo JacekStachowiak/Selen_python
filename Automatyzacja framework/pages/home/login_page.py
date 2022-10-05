@@ -18,21 +18,7 @@ class LoginPage(SelenDriver):
     _login_button = '//input[@class="btn btn-default btn-block btn-md dynamic-button"]'
     _all_Course = '//a[text()="ALL COURSES"]'
     
-    # def getLoginLink(self):
-    #     return self.driver.find_element(By.XPATH, self._login_link)
     
-    # def getEmailField(self):
-    #     return self.driver.find_element(By.ID, self._email_field)
-    
-    # def getPasswordField(self):
-    #     return self.driver.find_element(By.ID, self._password_field)
-    
-    # def getLoginButton(self):
-    #     return self.driver.find_element(By.XPATH, self._login_button)
-    
-    # def getAllCourse(self):
-    #     return self.driver.find_element(By.XPATH, self._all_Course)
-        
     def clickLoginLink(self):
         self.elementClick(self._login_link, locatorType='link')
     
@@ -49,7 +35,14 @@ class LoginPage(SelenDriver):
         self.elementClick(self._all_Course, locatorType='xpath')
 
 
-    def login(self, email='', password=''):
+    def login1(self, email='', password=''):
+        self.clickLoginLink()
+        self.enterEmail(email)
+        self.enterPassword(password)
+        self.clickLoginButton()
+        # self.clickAllCourse()
+    
+    def login2(self, email='', password=''):
         self.clickLoginLink()
         self.enterEmail(email)
         self.enterPassword(password)
@@ -57,7 +50,7 @@ class LoginPage(SelenDriver):
         self.clickAllCourse()
     
     def verifyLoginSuccessfull(self):
-        result = self.isElementPresent('//div[@class="dropdown"]', locatorType='xpath')
+        result = self.isElementPresent('//*[@id="navbar-inverse-collapse"]/div[1]/div', locatorType='xpath')
         return result
     
     def verifyLoginFailed(self):

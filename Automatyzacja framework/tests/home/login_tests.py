@@ -22,15 +22,15 @@ class LoginTest(unittest.TestCase):
     
     @pytest.mark.run(order=2) 
     def test_ValidLogin(self):
-        self.lp.login('test@email.com','abcabc')
+        self.lp.login2('test@email.com','abcabc')
         result = self.lp.verifyLoginSuccessfull()
         assert result == True
         self.driver.quit()
     
     @pytest.mark.run(order=1)    
-    def test_invalidLogin(self):
+    def test_InvalidLogin(self):
         self.driver.get(self.baseURL)
-        self.lp.login('test@email.com','abcabcASDFGH')
+        self.lp.login1('test@email.com123','abcabcASDFGH')
         result = self.lp.verifyLoginFailed()
         assert result == True
             

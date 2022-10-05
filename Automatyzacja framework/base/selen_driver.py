@@ -19,7 +19,7 @@ class SelenDriver():
             return By.ID
         elif locatorType == 'xpath':
             return By.XPATH
-        elif locatorType == 'css_selector':
+        elif locatorType == 'css':
             return By.CSS_SELECTOR
         elif locatorType == 'name':
             return By.NAME
