@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from base.selen_driver import SelenDriver
 import utilities.custom_logger as cl  
 import logging
+import time
 class LoginPage(SelenDriver):
     
     log = cl.customLogger(logging.DEBUG)
@@ -37,15 +38,19 @@ class LoginPage(SelenDriver):
 
     def login1(self, email='', password=''):
         self.clickLoginLink()
+        self.clearFields()
         self.enterEmail(email)
         self.enterPassword(password)
+        time.sleep(3)
         self.clickLoginButton()
         # self.clickAllCourse()
     
     def login2(self, email='', password=''):
         self.clickLoginLink()
+        self.clearFields()
         self.enterEmail(email)
         self.enterPassword(password)
+        time.sleep(3)
         self.clickLoginButton()
         self.clickAllCourse()
     
@@ -56,4 +61,9 @@ class LoginPage(SelenDriver):
     def verifyLoginFailed(self):
         result = self.isElementPresent('//span[text()="Your username or password is invalid. Please try again."]', locatorType='xpath')
         return result
-                
+    
+    def clearFields(self):
+        emailFields = self.getElement(locator=self._email_field)    
+        emailFields.clear()
+        passwordFields = self.getElement(locator=self._password_field)
+        passwordFields.clear()        
