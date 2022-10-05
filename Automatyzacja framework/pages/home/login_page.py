@@ -13,15 +13,10 @@ class LoginPage(SelenDriver):
     
     # locators
     _login_link = '//a[text()="Login"]'
-    #_login_link = '//a[text()="Sign In"]'
     _email_field = 'email'
-    #_email_field = 'email'
     _password_field = 'password'
-    #_password_field = 'password'
-    _login_button = 'commit'
-    #_login_button = '//input[@class="btn btn-default btn-block btn-md dynamic-button"]'
-    
-    #_all_Course = '//a[text()="ALL COURSES"]'
+    _login_button = '//input[@class="btn btn-default btn-block btn-md dynamic-button"]'
+    _all_Course = '//a[text()="ALL COURSES"]'
     
     # def getLoginLink(self):
     #     return self.driver.find_element(By.XPATH, self._login_link)
@@ -39,7 +34,6 @@ class LoginPage(SelenDriver):
     #     return self.driver.find_element(By.XPATH, self._all_Course)
         
     def clickLoginLink(self):
-        #self.elementClick(self._login_link, locatorType='xpath')
         self.elementClick(self._login_link, locatorType='link')
     
     def enterEmail(self, email):
@@ -49,10 +43,10 @@ class LoginPage(SelenDriver):
         self.sendKeys(password, self._password_field, locatorType='id') 
     
     def clickLoginButton(self):
-        self.elementClick(self._login_button, locatorType='name')
+        self.elementClick(self._login_button, locatorType='xpath')
     
-    #def clickAllCourse(self):
-    #    self.elementClick(self._all_Course, locatorType='xpath')
+    def clickAllCourse(self):
+        self.elementClick(self._all_Course, locatorType='xpath')
 
 
     def login(self, email='', password=''):
@@ -60,13 +54,13 @@ class LoginPage(SelenDriver):
         self.enterEmail(email)
         self.enterPassword(password)
         self.clickLoginButton()
-        # self.clickAllCourse()
+        self.clickAllCourse()
     
     def verifyLoginSuccessfull(self):
         result = self.isElementPresent('//div[@class="dropdown"]', locatorType='xpath')
         return result
     
     def verifyLoginFailed(self):
-        result = self.isElementPresent('//text()="Your email or password is incorrect."', locatorType='xpath')
+        result = self.isElementPresent('//span[text()="Your username or password is invalid. Please try again."]', locatorType='xpath')
         return result
                 
