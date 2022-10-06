@@ -63,9 +63,9 @@ class LoginPage(BasePage):
         return result
     
     def verifyLoginTitle(self):
-        return self.verifyPageTitle('Google')  # "All Course"
+        return self.verifyPageTitle('All Course')  # "All Course"
    
-   
+
     def clearFields(self):
         emailFields = self.getElement(locator=self._email_field)    
         emailFields.clear()
