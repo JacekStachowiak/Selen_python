@@ -13,6 +13,7 @@ class BasePage(SelenDriver):
         
         try:
             actualTitle = self.getTitle()
+            #return self.util.verifyTextMatch(actualTitle, titleToVerify)
             return self.util.verifyTextContains(actualTitle, titleToVerify)
         except:
             self.log.error('Failed to get page title')

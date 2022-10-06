@@ -51,7 +51,7 @@ class Util(object):
         self.log.info(f'Actual text from application Web UI --> :: {actualText}')                                               
         self.log.info(f'Expected text from application Web UI --> :: {expectedText}')        
         if expectedText.lower() in actualText.lower():
-            self.log.info('### Verification Cantains ###')                                       
+            self.log.info('### Verification Contains ###')                                       
             return True
         else:
             self.log.info('### Verification does not Cantains !!!')

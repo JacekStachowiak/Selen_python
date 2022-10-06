@@ -8,7 +8,6 @@ import logging
 import time
 import os
 
-
 class SelenDriver():
     
     log = cl.customLogger(logging.DEBUG)
@@ -17,6 +16,7 @@ class SelenDriver():
         self.driver = driver
     
     def screenShot(self, resultMessage):
+        
         fileName = resultMessage + '.' + str(round(time.time()*1000)) + '.png'
         screenshotDirectory = '../screenshots/'
         relativeFileName = screenshotDirectory + fileName
@@ -107,13 +107,14 @@ class SelenDriver():
         
         try:
             if locator:
-                self.log.debug('In locator condytion')
+                self.log.debug('In locator condition')
                 element = self.getElement(locator, locataorType)
             self.log.debug('Before finding text')
             text = element.text
             self.log.debug(f'After finding element, size is: {str(len(text))}') 
+            
             if len(text) == 0:
-                text = element.get_attribute('inner text')
+                text = element.get_attribute('innerText')
             if len(text) != 0:
                 self.log.info(f'Getting text on element: {info}')
                 self.log.info(f'The text is:: "{text}"')
@@ -175,10 +176,11 @@ class SelenDriver():
     
     
     def waitForElement(self, locator, locatorType='id',timeout_1=10, pollFrequency_1=0.5):
+        
         element = None
         try:
             byType = self.getByType(locatorType)
-            self.log.info(f'Waiting for maximum:: {timeout_1} :: second for element to be visible')
+            self.log.info(f'Waiting for maximum:: {str(timeout_1)} :: second for element to be clickable')
             wait = WebDriverWait(self.driver, timeout=timeout_1, poll_frequency=pollFrequency_1, ignored_exceptions=[NoSuchElementException,
                                                                                        ElementNotVisibleException,
                                                                                        ElementNotSelectableException]) 
