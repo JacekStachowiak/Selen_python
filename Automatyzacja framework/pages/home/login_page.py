@@ -1,10 +1,11 @@
 from unittest import result
 from selenium.webdriver.common.by import By
-from base.selen_driver import SelenDriver
 import utilities.custom_logger as cl  
 import logging
 import time
-class LoginPage(SelenDriver):
+from base.basepage import BasePage
+
+class LoginPage(BasePage):
     
     log = cl.customLogger(logging.DEBUG)
     
@@ -61,12 +62,10 @@ class LoginPage(SelenDriver):
         result = self.isElementPresent('//span[text()="Your username or password is invalid. Please try again."]', locatorType='xpath')
         return result
     
-    def verifyTitle(self):
-        if "All Courses" in self.getTitle():    # "All Courses"
-            return True
-        else:
-            return False
-    
+    def verifyLoginTitle(self):
+        return self.verifyPageTitle('Google')  # "All Course"
+   
+   
     def clearFields(self):
         emailFields = self.getElement(locator=self._email_field)    
         emailFields.clear()
