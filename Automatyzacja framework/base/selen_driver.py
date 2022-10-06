@@ -66,10 +66,24 @@ class SelenDriver():
             self.log.info(f'Element not found with locator: {locator} and locatorType: {locatorType}')
         return element      
     
-    
-    def elementClick(self, locator, locatorType='id'):
+    # nowa metoda
+    def getElementList(self, locator, locatorType='id'):    # locator 'name', locatorType 'id'
+        element = None
         try:
-            element = self.getElement(locator, locatorType)
+            locatorType = locatorType.lower()
+            byType = self.getByType(locatorType)
+            element = self.driver.find_elements(byType, locator) 
+            self.log.info(f'Element Found with locator: {locator} and locatorType: {locatorType}')           
+        except:
+            self.log.info(f'Element not found with locator: {locator} and locatorType: {locatorType}')
+        return element  
+    
+    
+    def elementClick(self, locator='', locatorType='id', element=None):
+        # zmodyfikowany o if
+        try:
+            if locator: # is True
+                element = self.getElement(locator, locatorType)
             element.click()
             self.log.info(f'Click on element with locator: {locator}, locatorType: {locatorType}')
         except:
@@ -77,46 +91,90 @@ class SelenDriver():
             print_stack()            
 
     
-    def sendKeys(self, data, locator, locatorType='id'):
+    def sendKeys(self, data, locator='', locatorType='id', element=None):
+        # zmodyfikowany
         try:
-            element = self.getElement(locator, locatorType)
+            if locator:
+                element = self.getElement(locator, locatorType)
             element.send_keys(data)
             self.log.info(f'Send data on element with locator: {locator}, locatorType: {locatorType}')
         except:
             self.log.info(f'Send data on element with locator: {locator}, locatorType: {locatorType}')
             print_stack() 
     
-    
-# aby sprawdzić czy element jest obecny na stronie - czy będzie false czy True cały czas testujemy (nie wyrzuci)
-    def isElementPresent(self, locator, locatorType='id'):
+    # nowa metoda
+    def getText(self, locator='', locataorType='id', element=None, info=''):
+        
         try:
-            element = self.getElement(locator, locatorType) # By.Id, 'name'
+            if locator:
+                self.log.debug('In locator condytion')
+                element = self.getElement(locator, locataorType)
+            self.log.debug('Before finding text')
+            text = element.text
+            self.log.debug(f'After finding element, size is: {str(len(text))}') 
+            if len(text) == 0:
+                text = element.get_attribute('inner text')
+            if len(text) != 0:
+                self.log.info(f'Getting text on element: {info}')
+                self.log.info(f'The text is:: "{text}"')
+                text = text.strip()
+        except:
+            self.log.error(f'Failed to get text on element: {info}')
+            print_stack()
+            text = None
+        return text
+  
+    # aby sprawdzić czy element jest obecny na stronie - czy będzie false czy True cały czas testujemy (nie wyrzuci)
+    def isElementPresent(self, locator='', locatorType='id', element=None):
+        # zmodyfikowany
+        try:
+            if locator:
+                element = self.getElement(locator, locatorType) # By.Id, 'name'
             if element is not None:
-                self.log.info('Element Found')
+                self.log.info(f'Element present with locator: {locator}, locatorType: {locatorType}')
                 return True
             else: 
-                self.log.info('Element not found')
+                self.log.info(f'Element not present with locator: {locator}, locatorType: {locatorType}')
                 return False
         except:
             self.log.info('Element not found')
             return False
     
+    
+    # nowa metoda
+    def isElementDisplayed(self, locator='', locatorType='id', element = None):
+        
+        isDisplayed = False
+        try:
+            if locator:
+                element = self.getElement(locator, locatorType)
+            if element is not None:                
+                isDisplayed = element.is_displayed()
+                self.log.info(f'Element is displayed with locator: {locator}, locatorType: {locatorType}') 
+            else:
+                self.log.info(f'Element is not displayed with locator: {locator}, locatorType: {locatorType}')                
+            return isDisplayed
+        except:
+            print('Element not found')
+            return False
+    
+    
     # drugi sposób na obecność elementu
-    def isElementCheck(self, byType, locator):
+    def elementPresentCheck(self, locator, byType):
         try:
             elementList = self.driver.find_elements(byType, locator) # By.Id, 'name'
             if len(elementList) > 0:
-                self.log.info('Element Found')
+                self.log.info(f'Element present with locator: {locator}, locatorType: {byType}')
                 return True
             else:
-                self.log.info('Element not found')
+                self.log.info(f'Element not present with locator: {locator}, locatorType: {byType}')
                 return False
         except:
             self.log.info('Element not found')
             return False
     
     
-    def waitForElement(self, locator, locatorType = 'id',timeout_1=10, pollFrequency_1=0.5):
+    def waitForElement(self, locator, locatorType='id',timeout_1=10, pollFrequency_1=0.5):
         element = None
         try:
             byType = self.getByType(locatorType)
