@@ -1,5 +1,6 @@
 import pytest
 from base.webdriverfactory import WebDriverFactory
+from pages.home.login_page import LoginPage
 
 @pytest.fixture()
 def setUp():
@@ -12,6 +13,9 @@ def oneTimeSetUp(request, browser):
     print('Uruchamiam one time setUp')
     wdf = WebDriverFactory(browser)
     driver = wdf.getWebDriverInstance()
+    lp = LoginPage(driver)
+    lp.login1('test@email.com123','abcabcASDFGH')
+    lp.login2('test@email.com','abcabc')
    
     if request.cls is not None:
         request.cls.driver = driver

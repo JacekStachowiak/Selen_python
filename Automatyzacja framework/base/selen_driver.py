@@ -187,4 +187,13 @@ class SelenDriver():
         except:
             self.log.info('Element not appeared on the page')
             print_stack()  # ślad stosu
-        return element        
+        return element   
+    
+    
+    def webScroll(self, direction='up'):
+        # new method
+        if direction == 'up':
+            self.driver.execute_script('window.scrollBy(0, -1000);')
+
+        if direction == 'down':
+            self.driver.execute_script('window.scrollBy(0, 1000);')
