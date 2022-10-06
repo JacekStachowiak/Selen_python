@@ -1,3 +1,4 @@
+from traceback import print_stack
 from base.selen_driver import SelenDriver
 import utilities.custom_logger as cl
 import logging
@@ -20,12 +21,16 @@ class TestStatus(SelenDriver):
                 else:
                     self.resultlist.append('FAIL')     
                     self.log.error(f'### VERYFICATION FAIL ### :: {resultMessage}')
+                    self.screenShot(resultMessage)
             else:
                 self.resultlist.append('FAIL')     
                 self.log.error(f'### VERYFICATION FAIL ### :: {resultMessage}')
+                self.screenShot(resultMessage)
         except:
             self.resultlist.append('FAIL')
             self.log.error('### Exception Occured !!!')
+            self.screenShot(resultMessage)
+            print_stack()
                                             
     
     def mark(self, result, resultMessage):
