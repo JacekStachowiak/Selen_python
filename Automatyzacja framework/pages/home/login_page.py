@@ -62,7 +62,7 @@ class LoginPage(SelenDriver):
         return result
     
     def verifyTitle(self):
-        if "Google" in self.getTitle():
+        if "All Courses" in self.getTitle():    # "All Courses"
             return True
         else:
             return False
